@@ -58,9 +58,25 @@ def main():
         else:
             print("OK")
 
-    # while True:
-    #     print("What would you like to do?")
-    #     input()
+    print()
+
+    while True:
+        print("Would you like to add to the database or query the database?")
+        user_input = input("\"A\" to add or \"Q\" to query (\"E\" to exit): ")
+
+        if user_input.lower().strip() == "a":
+            print("Added")
+            print()
+        elif user_input.lower().strip() == "q":
+            print("Queried")
+            print()
+        elif user_input.lower().strip() == "e":
+            break
+        else:
+            print("Please enter one of the provided options.")
+            print()
+
+    print("Don't stop applying! You've got this! Make it a great day!")
 
     cursor.close()
     cnx.close()
