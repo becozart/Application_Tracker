@@ -5,7 +5,6 @@ from mysql.connector import errorcode
 
 
 def main():
-
     db_name = 'applications'
 
     tables = {}
@@ -65,6 +64,29 @@ def main():
         user_input = input("\"A\" to add or \"Q\" to query (\"E\" to exit): ")
 
         if user_input.lower().strip() == "a":
+            print("Please enter the following (Enter Null if you do not know the value):")
+            company_name = input("Company Name: ").strip()
+            position_name = input("Position Name: ").strip()
+            month_applied = input("Month Applied (2 digits): ").strip()
+            day_applied = input("Day Applied (2 digits): ").strip()
+            year_applied = input("Year Applied (4 digits): ").strip()
+            date_applied = year_applied + "-" + month_applied + "-" + day_applied
+            result = input("Result: ").strip()
+            source = input("Source: ").strip()
+            link = input("Link: ").strip()
+            notes = input("Notes: ").strip()
+
+            add_application = ("INSERT INTO applications "
+                               "(company_name, position_name, date_applied, result, "
+                               "source, link, notes) "
+                               "VALUES (%s, %s, %s, %s, %s, %s, %s)")
+
+            application_data = (company_name, position_name, date_applied, result,
+                                source, link, notes)
+
+            cursor.execute(add_application, application_data)
+            cnx.commit()
+
             print("Added")
             print()
         elif user_input.lower().strip() == "q":
