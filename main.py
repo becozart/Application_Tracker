@@ -23,7 +23,7 @@ def main():
 
     try:
         cnx = mysql.connector.connect(option_files="config.ini")
-        cursor = cnx.cursor()
+        cursor = cnx.cursor(buffered=True)
     except mysql.connector.Error as e:
         if e.errno == errorcode.ER_ACCESS_DENIED_ERROR:
             print("Incorrect Username or Password.")
@@ -90,6 +90,13 @@ def main():
             print("Added")
             print()
         elif user_input.lower().strip() == "q":
+            query = input("Please enter the SQL query that you would like to see: ")
+
+            cursor.execute(query)
+
+            for (company_name) in cursor:
+                print(company_name)
+
             print("Queried")
             print()
         elif user_input.lower().strip() == "e":
