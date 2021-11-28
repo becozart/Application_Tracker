@@ -67,22 +67,29 @@ def main():
         print()
 
         if user_input.lower().strip() == "s":
-            query = input("Please enter a SQL query: ")
+            print("Welcome to the SQL side!")
+            while True:
+                query = input("Please enter a SQL query "
+                              "(\"E\" to exit to the main menu): ")
 
-            cursor.execute(query)
+                if query.lower().strip() == "e":
+                    print()
+                    break
+                else:
+                    cursor.execute(query)
 
-            for (row) in cursor:
-                print(row)
+                    for (row) in cursor:
+                        print(row)
 
-            print("Queried")
-            print()
+                    print("Queried")
+                    print()
         elif user_input.lower().strip() == "n":
             print("Welcome to the sans-SQL side!")
             while True:
                 print("Please choose on of the following options:")
                 print("1: See all applications")
                 print("2: Add an application")
-                print("(\"E\" to exit to the main program)")
+                print("(\"E\" to exit to the main menu)")
                 user_input = input("")
 
                 if user_input.strip() == "1":
@@ -121,6 +128,7 @@ def main():
                     print("Added")
                     print()
                 elif user_input.lower().strip() == "e":
+                    print()
                     break
                 else:
                     print("Please enter one of the stated options.")
