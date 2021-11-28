@@ -1,7 +1,5 @@
 # Application_Tracker_Database
 
-Notes: 
-
 You will need to have python, MySQL, and MySQL Connector installed before you can run this program. 
 You can install them from here:
 
