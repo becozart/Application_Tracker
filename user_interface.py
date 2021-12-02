@@ -1,5 +1,7 @@
-class ui:
-    def run(self, cnx, cursor):
+class Ui:
+
+    @staticmethod
+    def run(cnx, cursor):
         while True:
             print("Welcome to the Application Tracker!")
             print("Would you like to use SQL to work with your application data or not?")

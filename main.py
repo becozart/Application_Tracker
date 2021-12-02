@@ -2,20 +2,7 @@
 
 import mysql.connector
 from mysql.connector import errorcode
-import ui
-
-
-def main():
-    db_name = 'applications'
-    tables = __create_table_dictionary()
-    cnx = __create_connection("config.ini")
-    cursor = __create_cursor(cnx)
-
-    __create_database(cnx, cursor, db_name)
-    __create_tables(cursor, tables)
-
-    application_tracker = ui.ui()
-    application_tracker.run(cnx, cursor)
+from user_interface import Ui
 
 
 def __create_table_dictionary():
@@ -101,6 +88,18 @@ def __create_tables(cursor, tables):
             print("OK")
 
     print()
+
+
+def main():
+    db_name = 'applications'
+    tables = __create_table_dictionary()
+    cnx = __create_connection("config.ini")
+    cursor = __create_cursor(cnx)
+
+    __create_database(cnx, cursor, db_name)
+    __create_tables(cursor, tables)
+
+    Ui.run(cnx, cursor)
 
 
 if __name__ == "__main__":
