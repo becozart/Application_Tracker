@@ -13,6 +13,7 @@ def main():
     __create_database(cnx, cursor, db_name)
     __create_tables(cursor, tables)
     print()
+    print()
 
     while True:
         print("Welcome to the Application Tracker!")
