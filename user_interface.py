@@ -114,7 +114,7 @@ class Ui:
                 print("Please enter one of the stated options.")
                 print()
 
-        print("Don't stop applying! You've got this! Make it a great day!")
+        print("\033[92m" + "Don't stop applying! You've got this! Make it a great day!")
 
         cursor.close()
         cnx.close()
