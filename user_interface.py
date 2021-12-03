@@ -1,11 +1,18 @@
-def execute_sql_query(cursor, query):
-    cursor.execute(query)
+def print_query_to_console(cursor):
+    print()
 
     for (row) in cursor:
-        print(row)
+        row_as_string = ""
+        for item in row:
+            row_as_string += str(item) + ", "
+        print(row_as_string[:-2])
 
-    print("Queried")
     print()
+
+
+def execute_sql_query(cursor, query):
+    cursor.execute(query)
+    print_query_to_console(cursor)
 
 
 def run_sql_side(cursor):
@@ -36,11 +43,7 @@ def execute_sans_sql_query_view_all_applications(cursor):
     query = "SELECT * FROM applications"
 
     cursor.execute(query)
-
-    for (row) in cursor:
-        print(row)
-
-    print()
+    print_query_to_console(cursor)
 
 
 def get_application_data():
