@@ -1,3 +1,6 @@
+import mysql
+
+
 def print_query_to_console(cursor):
     print()
 
@@ -11,8 +14,12 @@ def print_query_to_console(cursor):
 
 
 def execute_sql_query(cursor, query):
-    cursor.execute(query)
-    print_query_to_console(cursor)
+    try:
+        cursor.execute(query)
+        print_query_to_console(cursor)
+    except mysql.connector.Error:
+        print("Please enter a valid SQL Query.")
+        print()
 
 
 def run_sql_side(cursor):
