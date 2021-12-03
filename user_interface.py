@@ -1,9 +1,19 @@
 import mysql
 
 
-def print_query_to_console(cursor):
+def print_column_names(cursor):
     print()
 
+    column_info_tuple = cursor.description
+    columns = ""
+
+    for (column) in column_info_tuple:
+        columns += str(column[0]) + ", "
+
+    print(columns[:-2])
+
+
+def print_rows(cursor):
     for (row) in cursor:
         row_as_string = ""
         for item in row:
@@ -11,6 +21,11 @@ def print_query_to_console(cursor):
         print(row_as_string[:-2])
 
     print()
+
+
+def print_query_to_console(cursor):
+    print_column_names(cursor)
+    print_rows(cursor)
 
 
 def execute_sql_query(cursor, query):
