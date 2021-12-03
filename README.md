@@ -14,6 +14,8 @@ to help the utilize both sides of the program.
 The goal of this program is to create a useful tool that anyone of any technical background can use to keep track of the applications 
 in their job search.
 
+-------------------------------------------------------------------------------------------------------------------------------------
+
 Notes: 
 
 You will need to have python, MySQL, and MySQL Connector installed before you can run this program. 
