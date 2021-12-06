@@ -81,6 +81,7 @@ def get_application_data():
     source = input("Source: ").strip()
     link = input("Link: ").strip()
     notes = input("Notes: ").strip()
+    print()
 
     return company_name, position_name, date_applied, result, source, link, notes
 
@@ -97,11 +98,17 @@ def execute_sans_sql_query_add_application(cursor, cnx):
     cnx.commit()
 
 
-def execute_sans_sql_query_delete_application(cursor, cnx):
+def get_app_number_to_delete(cursor):
     execute_sans_sql_query_view_all_applications(cursor)
     app_no_to_delete = input("What is the app_no of the application "
                              "that you would like to delete? ")
     print()
+
+    return app_no_to_delete
+
+
+def execute_sans_sql_query_delete_application(cursor, cnx):
+    app_no_to_delete = get_app_number_to_delete(cursor)
 
     delete_application = "DELETE FROM applications WHERE app_no =" + app_no_to_delete + ";"
 
