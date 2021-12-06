@@ -55,6 +55,7 @@ def print_sans_sql_side_menu():
     print("Please choose on of the following options by entering its number:")
     print("1: View all applications")
     print("2: Add an application")
+    print("3: Delete an application")
     print("(\"E\" to exit to the main menu)")
     user_input = input("")
 
@@ -95,8 +96,17 @@ def execute_sans_sql_query_add_application(cursor, cnx):
     cursor.execute(add_application, application_data)
     cnx.commit()
 
-    print("Added")
+
+def execute_sans_sql_query_delete_application(cursor, cnx):
+    execute_sans_sql_query_view_all_applications(cursor)
+    app_no_to_delete = input("What is the app_no of the application "
+                             "that you would like to delete? ")
     print()
+
+    delete_application = "DELETE FROM applications WHERE app_no =" + app_no_to_delete + ";"
+
+    cursor.execute(delete_application)
+    cnx.commit()
 
 
 def run_sans_sql_side(cursor, cnx):
@@ -109,6 +119,8 @@ def run_sans_sql_side(cursor, cnx):
             execute_sans_sql_query_view_all_applications(cursor)
         elif user_input.strip() == "2":
             execute_sans_sql_query_add_application(cursor, cnx)
+        elif user_input.strip() == "3":
+            execute_sans_sql_query_delete_application(cursor, cnx)
         elif user_input.lower().strip() == "e":
             print()
             break
